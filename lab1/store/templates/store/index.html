@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Home</title>
+    <link rel="stylesheet" href="{% static 'store/style.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .categories { display: flex; gap: 20px; flex-wrap: wrap; }
+        .category-card { border: 1px solid #ccc; border-radius: 10px; width: 200px; text-align: center; padding: 10px; }
+        .category-card img { width: 100%; border-radius: 10px; }
+        .category-card a { text-decoration: none; color: #333; font-weight: bold; display: block; margin-top: 10px; }
+        .category-card a:hover { color: #007BFF; }
+    </style>
+</head>
+<body>
+    <h1>Shop Categories</h1>
+    <div class="categories">
+        {% for category in categories %}
+        <div class="category-card">
+            <img src="{{ category.cat_image.url }}" alt="{{ category.category_name }}">
+            <a href="{% url 'category_detail' category.slug %}">{{ category.category_name }}</a>
+        </div>
+        {% empty %}
+        <p>No categories available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

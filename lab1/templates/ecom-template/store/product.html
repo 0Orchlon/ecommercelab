@@ -1,0 +1,6 @@
+<h1>{{ product.product_name }}</h1>
+<img src="{{ product.images.url }}" alt="{{ product.product_name }}">
+<p>{{ product.description }}</p>
+<p>Price: ${{ product.price }}</p>
+<p>Stock: {{ product.stock }}</p>
+<p>Category: <a href="{% url 'category_detail' category.slug %}">{{ category.category_name }}</a></p>
