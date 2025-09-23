@@ -11,22 +11,23 @@ def index(request):
         SELECT * FROM store_product
         WHERE is_available = TRUE
         ORDER BY created_date DESC
-        LIMIT 8
+        LIMIT 4
     """)
     context = {
         'categories': categories,
         'products': products,
     }
     return render(request, 'ecom-template/index.html', context)
-
-def store(request):
-    products = Product.objects.all()
+    
+def store(request, slug=None):
     categories = Category.objects.all()
-    selected_category = request.GET.get('category')
+    products = Product.objects.all()
     sort = request.GET.get('sort')
 
-    if selected_category:
-        products = products.filter(category__slug=selected_category)
+    # Filter by category slug from the URL (not GET params)
+    selected_category = slug
+    if slug:
+        products = products.filter(category__slug=slug)
 
     # Sort logic
     if sort == 'recent':
@@ -50,7 +51,6 @@ def product_detail(request, slug):
         'categories': categories,
     }
     return render(request, 'ecom-template/product-detail.html', context)
-
 
 def cart(request):
     return render(request, 'ecom-template/cart.html')

@@ -95,12 +95,13 @@
                   <i class="fa fa-bars"></i> All category
                 </button>
                 <div class="dropdown-menu">
-                  {% for category in categories %}
+                  {% for category in links %}
                   <a
                     class="dropdown-item"
-                    href="{% url 'store' %}?category={{ category.slug }}"
-                    >{{ category.category_name }}</a
+                    href="{% url 'store' category.slug %}"
                   >
+                    {{ category.category_name | upper }}
+                  </a>
                   {% empty %}
                   <span class="dropdown-item">No categories available</span>
                   {% endfor %}

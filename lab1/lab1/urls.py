@@ -19,7 +19,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),  # User registration
     path('signin/', views.signin, name='signin'),  # User login
     path('search/', views.search_result, name='search_result'),  # Search results
-    # path('category/<slug:category_slug>/', storeviews.category_view, name='category_detail'),
+    # path('category/<slug:slug>/', views.category_view, name='category_detail'),
     # path('product/<slug:product_slug>/', storeviews.product_view, name='product_detail'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

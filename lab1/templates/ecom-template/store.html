@@ -37,10 +37,10 @@
                         <li class="{% if not selected_category %}active{% endif %}">
                             <a href="{% url 'store' %}">All</a>
                         </li>
-                        {% for category in categories %}
-                        <li class="{% if selected_category == category.slug %}active{% endif %}">
-                            <a href="?category={{ category.slug }}">{{ category.category_name }}</a>
-                        </li>
+                        {% for category in links %}
+    <li class="{% if selected_category == category.slug %}active{% endif %}">
+        <a href="{% url 'store' category.slug %}">{{ category.category_name }}</a>
+    </li>
                         {% endfor %}
                     </ul>
                 </div>
