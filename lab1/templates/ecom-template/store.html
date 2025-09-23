@@ -20,6 +20,18 @@
                 <header class="card-header">
                     <h6 class="title">Categories</h6>
                 </header>
+                <form method="get" class="form-inline ml-3">
+    {% if selected_category %}
+        <input type="hidden" name="category" value="{{ selected_category }}">
+    {% endif %}
+    <label for="sort_by" class="mr-2">Sort by:</label>
+    <select name="sort" id="sort_by" class="form-control" onchange="this.form.submit()">
+        <option value="">Default</option>
+        <option value="recent" {% if request.GET.sort == 'recent' %}selected{% endif %}>Most Recent</option>
+        <option value="oldest" {% if request.GET.sort == 'oldest' %}selected{% endif %}>Oldest</option>
+    </select>
+</form>
+
                 <div class="card-body">
                     <ul class="list-menu">
                         <li class="{% if not selected_category %}active{% endif %}">

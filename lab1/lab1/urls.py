@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 # from store import views as storeviews
 from shop import views
 from django.conf.urls.static import static
@@ -10,7 +10,7 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.index, name='index'),  # Home page
-    path('store/', views.store, name='store'),  # Store listing
+    path('store/', include("shop.store_url")),  # Store listing
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
     path('cart/', views.cart, name='cart'),  # Cart page
     path('place-order/', views.place_order, name='place_order'),  # Place order page
