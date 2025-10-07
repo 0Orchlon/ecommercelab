@@ -74,9 +74,16 @@
 
                 <hr>
 
-                <a href="{% url 'cart' %}" class="btn btn-primary">
-                    <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>
-                </a>
+                {% if product.stock > 0 %}
+    <a href="{% url 'cart' %}" class="btn btn-primary">
+        <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>
+    </a>
+{% else %}
+    <button class="btn btn-secondary" disabled>
+        <span class="text">Out of Stock</span> <i class="fas fa-shopping-cart"></i>
+    </button>
+{% endif %}
+
 
             </article>
         </main>

@@ -9,10 +9,10 @@ def index(request):
     categories = Category.objects.raw("SELECT * FROM store_category")
     products = Product.objects.raw("""
         SELECT * FROM store_product
-        WHERE is_available = TRUE
         ORDER BY created_date DESC
         LIMIT 4
     """)
+        # WHERE is_available = TRUE
     context = {
         'categories': categories,
         'products': products,
@@ -43,14 +43,9 @@ def store(request, slug=None):
     return render(request, 'ecom-template/store.html', context)
 
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
-    categories = Category.objects.all()
-    context = {
-        'product': product,
-        'categories': categories,
-    }
-    return render(request, 'ecom-template/product-detail.html', context)
+def product_detail(request, category_slug, product_slug):
+    product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
+    return render(request, 'ecom-template/product-detail.html', {'product': product})
 
 def cart(request):
     return render(request, 'ecom-template/cart.html')
