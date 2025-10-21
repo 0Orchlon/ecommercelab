@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-import pprint
+
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('category_name',)}
