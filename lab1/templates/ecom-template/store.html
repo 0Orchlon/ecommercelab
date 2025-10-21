@@ -94,8 +94,8 @@
  <nav class="mt-4" aria-label="Page navigation sample">
   <ul class="pagination">
     {% if products.has_previous %}
-            <li class="page-item disabled">
-      <li><a href="?page={{ products.previous_page_number }}">« Previous</a></li>
+            <li class="page-item ">
+      <a class="page-link" href="?page={{ products.previous_page_number }}">« Previous</a>
       </li>
     {% endif %}
 
@@ -108,7 +108,9 @@
     {% endfor %}
 
     {% if products.has_next %}
-      <li><a href="?page={{ products.next_page_number }}">Next »</a></li>
+    <li class="page-item">
+        <li><a class="page-link" href="?page={{ products.next_page_number }}">Next »</a></li>
+    </li>
     {% endif %}
   </ul>
 {% endif %}

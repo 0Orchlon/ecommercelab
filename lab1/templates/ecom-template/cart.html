@@ -60,7 +60,7 @@
                             </div>
                         </td>
                         <td class="text-right">
-                            <a href="{% url 'remove_cart' item.product.id %}" class="btn btn-danger">Remove</a>
+                            <a href="{% url 'delete_cart_item' item.product.id %}" class="btn btn-danger">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -79,7 +79,7 @@
                 </dl>
                 <dl class="dlist-align">
                     <dt>Tax (10%):</dt>
-                    <dd class="text-right">${{ total|floatformat:2|add:"0"|divisibleby:10 }}</dd>
+                    <dd class="text-right">${{ total|divisibleby:10 }}</dd>
                 </dl>
                 <dl class="dlist-align">
                     <dt><strong>Total:</strong></dt>

@@ -1,5 +1,5 @@
 from django.db import models
-from shop.models import Product  # <-- Product моделийг shop app-аас дуудна
+from store.models import Product  # <-- Product моделийг shop app-аас дуудна
 
 class Cart(models.Model):
     cart_id = models.CharField(max_length=250, blank=True)
