@@ -13,7 +13,7 @@ def index(request):
 
     # --- Handle pagination ---
     page = int(request.GET.get("page", 1))
-    per_page = 2  # Number of products per page
+    per_page = 4  # Number of products per page
 
     # Count total products
     with connection.cursor() as cursor:
@@ -65,7 +65,7 @@ def store(request, slug=None):
         products = products.order_by('id')
 
     # Pagination AFTER filtering and sorting
-    paginator = Paginator(products, 2)  # 6 products per page
+    paginator = Paginator(products, 4)  # 6 products per page
     page_number = request.GET.get('page')
     paged_products = paginator.get_page(page_number)
 
