@@ -12,7 +12,8 @@ urlpatterns = [
     path('', views.index, name='index'),  # Home page
     path('store/', include("shop.store_url")),  # Store listing
     path('<slug:category_slug>/<slug:product_slug>/', views.product_detail, name='product_detail'),
-    path('cart/', views.cart, name='cart'),  # Cart page
+    # path('cart/', views.cart, name='cart'),  # Cart page
+    path('cart/', include('carts.urls')),
     path('place-order/', views.place_order, name='place_order'),  # Place order page
     path('order-complete/', views.order_complete, name='order_complete'),  # Order complete
     path('dashboard/', views.dashboard, name='dashboard'),  # User dashboard

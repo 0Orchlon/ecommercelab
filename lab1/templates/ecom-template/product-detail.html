@@ -75,7 +75,7 @@
                 <hr>
 
                 {% if product.stock > 0 %}
-    <a href="{% url 'cart' %}" class="btn btn-primary">
+    <a href="{% url 'add_cart' product.id %}" class="btn btn-primary">
         <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>
     </a>
 {% else %}
